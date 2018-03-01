@@ -7,9 +7,9 @@ public class Main {
     private static final String OUTPUT_FILE_NAME = "FileOut\\output_" + INPUT_FILE_NAME;
 
     public static void main(String[] args) {
-        getFileParser().parseFile(INPUT_FILE_NAME);
-        getFileInfo().logic();
-        getFileOutputService().fileOutputWrite(OUTPUT_FILE_NAME);
-        getFileOutputService().FileOutputValidation(OUTPUT_FILE_NAME);
+//        getFileParser().parseFile(INPUT_FILE_NAME);
+//        getFileInfo().logic();
+//        getFileOutputService().fileOutputWrite(OUTPUT_FILE_NAME);
+//        getFileOutputService().FileOutputValidation(OUTPUT_FILE_NAME);
     }
 }
