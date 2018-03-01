@@ -48,9 +48,9 @@ public class FileInfoService {
                     rides.get(rideIndex).setRealFinish(lastRide.getRealFinish() + distanceBtw + rides.get(rideIndex).getDistance());
                     rides.get(rideIndex).setRealStart(rides.get(rideIndex).getEarliestStart());
                     car.getRides().add(rides.get(rideIndex));
-                    rides.remove(rides.get(rideIndex));
-                    rideIndex = 0;
+
                     System.out.println(rides.get(rideIndex).toString());
+                    rides.remove(rides.get(rideIndex));
                 }
 
             }
