@@ -37,26 +37,31 @@ public class FileInfoService {
         rides.sort(Comparator.comparing(Ride::getEarliestStart));
 
         //
-        for (Car car : getFileInfo().getCars()) {
-            Ride lastRide = car.getRides().get(car.getRides().size() - 1);
+
+        boolean boleanSort = true;
+        while (boleanSort) {
+            boleanSort=false;
+            for (Car car : getFileInfo().getCars()) {
+                Ride lastRide = car.getRides().get(car.getRides().size() - 1);
 
 
-            for (int rideIndex = 0; rideIndex < rides.size(); rideIndex++) {
-                Integer distanceBtw = getDistanceBetweenTwoRides(lastRide, rides.get(rideIndex));
+                for (int rideIndex = 0; rideIndex < rides.size() && !boleanSort; rideIndex++) {
+                    Integer distanceBtw = getDistanceBetweenTwoRides(lastRide, rides.get(rideIndex));
 
-                if (lastRide.getRealFinish() + distanceBtw <= rides.get(rideIndex).getEarliestStart() &&
-                        lastRide.getRealFinish() + distanceBtw + rides.get(rideIndex).getDistance() < rides.get(rideIndex).getLatestFinish()) {
+                    if (lastRide.getRealFinish() + distanceBtw <= rides.get(rideIndex).getEarliestStart() &&
+                            lastRide.getRealFinish() + distanceBtw + rides.get(rideIndex).getDistance() < rides.get(rideIndex).getLatestFinish()) {
 
-                    if (rides.get(rideIndex).getLatestFinish() <= steps) {
-                        rides.get(rideIndex).setRealFinish(lastRide.getRealFinish() + distanceBtw + rides.get(rideIndex).getDistance());
-                        rides.get(rideIndex).setRealStart(lastRide.getRealFinish() + distanceBtw);
-                        car.getRides().add(rides.get(rideIndex));
+                        if (rides.get(rideIndex).getLatestFinish() <= steps) {
+                            rides.get(rideIndex).setRealFinish(lastRide.getRealFinish() + distanceBtw + rides.get(rideIndex).getDistance());
+                            rides.get(rideIndex).setRealStart(lastRide.getRealFinish() + distanceBtw);
+                            car.getRides().add(rides.get(rideIndex));
 
-                        //System.out.println(car.getCarIndex() + "  " + rides.get(rideIndex).toString());
-                        rides.remove(rides.get(rideIndex));
+                            //System.out.println(car.getCarIndex() + "  " + rides.get(rideIndex).toString());
+                            rides.remove(rides.get(rideIndex));
+                            boleanSort = true;
+                        }
                     }
                 }
-
             }
         }
         for (Car car : getFileInfo().getCars()) {
