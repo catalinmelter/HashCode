@@ -49,7 +49,7 @@ public class FileInfoService {
                     rides.get(rideIndex).setRealStart(rides.get(rideIndex).getEarliestStart());
                     car.getRides().add(rides.get(rideIndex));
 
-                    System.out.println(car.getCarIndex() + "  " + rides.get(rideIndex).toString());
+                    //System.out.println(car.getCarIndex() + "  " + rides.get(rideIndex).toString());
                     rides.remove(rides.get(rideIndex));
                 }
 
@@ -60,7 +60,7 @@ public class FileInfoService {
             System.out.println(car.getCarIndex());
             for(Ride ride : car.getRides())
             {
-                System.out.println(ride.toString());
+                System.out.println(" " + ride.getIndex());
             }
         }
 
