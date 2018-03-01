@@ -44,9 +44,10 @@ public class FileInfoService {
             for (int rideIndex = 0; rideIndex < rides.size(); rideIndex++) {
                 Integer distanceBtw = getDistanceBetweenTwoRides(lastRide, rides.get(rideIndex));
 
-                if (lastRide.getRealFinish() + distanceBtw <= rides.get(rideIndex).getEarliestStart() && lastRide.getRealFinish() + distanceBtw + rides.get(rideIndex).getDistance() < rides.get(rideIndex).getLatestFinish()) {
+                if (lastRide.getRealFinish() + distanceBtw <= rides.get(rideIndex).getEarliestStart() &&
+                        lastRide.getRealFinish() + distanceBtw + rides.get(rideIndex).getDistance() < rides.get(rideIndex).getLatestFinish()) {
                     rides.get(rideIndex).setRealFinish(lastRide.getRealFinish() + distanceBtw + rides.get(rideIndex).getDistance());
-                    rides.get(rideIndex).setRealStart(rides.get(rideIndex).getEarliestStart());
+                    rides.get(rideIndex).setRealStart(lastRide.getRealFinish() + distanceBtw);
                     car.getRides().add(rides.get(rideIndex));
 
                     //System.out.println(car.getCarIndex() + "  " + rides.get(rideIndex).toString());
