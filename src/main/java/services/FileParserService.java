@@ -54,6 +54,7 @@ public class FileParserService {
             List<Car> carList = new ArrayList<>();
             for(int i=0;i<getFileInfo().getVehiclesLength();i++){
                 Car car = new Car();
+                car.setCarIndex(i);
                 Ride ride = new Ride();
                 ride.setDistance(0);
                 ride.setLatestFinish(0);

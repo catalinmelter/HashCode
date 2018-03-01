@@ -11,6 +11,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class Car {
+    private int carIndex;
     private int x;
     private int y;
     private int distanceToStart;

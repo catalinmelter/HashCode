@@ -22,6 +22,9 @@ public class Ride {
     int realStart;
     int realFinish;
 
+    public Ride() {
+    }
+
     public Ride(int index, int xStart, int yStart, int xFinish, int yFinish, int earliestStart, int latestFinish, int distance) {
         this.index = index;
         this.xStart = xStart;
