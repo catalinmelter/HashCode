@@ -58,6 +58,7 @@ public class FileInfoService {
 
                             //System.out.println(car.getCarIndex() + "  " + rides.get(rideIndex).toString());
                             rides.remove(rides.get(rideIndex));
+                            rideIndex =  rides.size();
                             boleanSort = true;
                             break;
                         }
