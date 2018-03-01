@@ -21,6 +21,8 @@ public class FileParserService {
             // First Line
             line = br.readLine();
             splited = line.split("\\s+");
+
+
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
