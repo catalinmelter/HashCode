@@ -46,12 +46,15 @@ public class FileInfoService {
 
                 if (lastRide.getRealFinish() + distanceBtw <= rides.get(rideIndex).getEarliestStart() &&
                         lastRide.getRealFinish() + distanceBtw + rides.get(rideIndex).getDistance() < rides.get(rideIndex).getLatestFinish()) {
-                    rides.get(rideIndex).setRealFinish(lastRide.getRealFinish() + distanceBtw + rides.get(rideIndex).getDistance());
-                    rides.get(rideIndex).setRealStart(lastRide.getRealFinish() + distanceBtw);
-                    car.getRides().add(rides.get(rideIndex));
 
-                    //System.out.println(car.getCarIndex() + "  " + rides.get(rideIndex).toString());
-                    rides.remove(rides.get(rideIndex));
+                    if (rides.get(rideIndex).getLatestFinish() <= steps) {
+                        rides.get(rideIndex).setRealFinish(lastRide.getRealFinish() + distanceBtw + rides.get(rideIndex).getDistance());
+                        rides.get(rideIndex).setRealStart(lastRide.getRealFinish() + distanceBtw);
+                        car.getRides().add(rides.get(rideIndex));
+
+                        //System.out.println(car.getCarIndex() + "  " + rides.get(rideIndex).toString());
+                        rides.remove(rides.get(rideIndex));
+                    }
                 }
 
             }
@@ -59,8 +62,7 @@ public class FileInfoService {
         for (Car car : getFileInfo().getCars()) {
 
             System.out.println(car.getCarIndex());
-            for(Ride ride : car.getRides())
-            {
+            for (Ride ride : car.getRides()) {
                 System.out.print(" " + ride.getIndex());
             }
         }
