@@ -61,7 +61,7 @@ public class FileInfoService {
             System.out.println(car.getCarIndex());
             for(Ride ride : car.getRides())
             {
-                System.out.println(" " + ride.getIndex());
+                System.out.print(" " + ride.getIndex());
             }
         }
 
