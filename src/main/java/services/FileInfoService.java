@@ -45,7 +45,7 @@ public class FileInfoService {
                 Ride lastRide = car.getRides().get(car.getRides().size() - 1);
 
 
-                for (int rideIndex = 0; rideIndex < rides.size() && !boleanSort; rideIndex++) {
+                for (int rideIndex = 0; rideIndex < rides.size(); rideIndex++) {
                     Integer distanceBtw = getDistanceBetweenTwoRides(lastRide, rides.get(rideIndex));
 
                     if (lastRide.getRealFinish() + distanceBtw <= rides.get(rideIndex).getEarliestStart() &&
@@ -59,6 +59,7 @@ public class FileInfoService {
                             //System.out.println(car.getCarIndex() + "  " + rides.get(rideIndex).toString());
                             rides.remove(rides.get(rideIndex));
                             boleanSort = true;
+                            break;
                         }
                     }
                 }
