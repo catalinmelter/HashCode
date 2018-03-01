@@ -1,10 +1,12 @@
 package models;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class Ride {
     int xStart;
     int yStart;
@@ -12,9 +14,8 @@ public class Ride {
     int xFinish;
     int yFinish;
 
-    int distance;
-
     int earliestStart;
     int latestFinish;
 
+    int distance;
 }

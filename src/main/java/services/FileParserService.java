@@ -1,9 +1,13 @@
 package services;
 
+import models.Ride;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import static services.FileInfoService.getFileInfo;
+import static java.lang.Integer.parseInt;
 
 public class FileParserService {
     private FileParserService() {}
@@ -21,7 +25,27 @@ public class FileParserService {
             // First Line
             line = br.readLine();
             splited = line.split("\\s+");
+            getFileInfo().setRows(parseInt(splited[0]));
+            getFileInfo().setColumns(parseInt(splited[1]));
+            getFileInfo().setVehiclesLength(parseInt(splited[2]));
+            getFileInfo().setRidesLength(parseInt(splited[3]));
+            getFileInfo().setBonus(parseInt(splited[4]));
+            getFileInfo().setSteps(parseInt(splited[5]));
 
+            for(int i=0;i<getFileInfo().getRidesLength();i++){
+                //parse ride
+                line = br.readLine();
+                splited = line.split("\\s+");
+
+                int x0 = parseInt(splited[0]);
+                int y0 = parseInt(splited[1]);
+                int x1 = parseInt(splited[2]);
+                int y1 = parseInt(splited[3]);
+                int distance = Math.abs(x1-x0) + Math.abs(y1-y0);
+
+                Ride ride = new Ride(x0, y0, x1, y1, parseInt(splited[4]), parseInt(splited[5]), distance);
+                getFileInfo().getRides().add(ride);
+            }
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
